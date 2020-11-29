@@ -1,0 +1,13 @@
+- var data;
+- bodyData.map(item => {if(item.template === "countTemplate") return data = item});
+
+div(class="statistics")
+	div(class="container")
+		div(class= "row py-3")
+			each val, index in data.numbers
+				div(class="col-sm-6 col-md-6 col-lg-3 text-center py-3")
+					div(class="heading py-1")
+						span(class="heading timer count-title count-number" data-to=val data-speed="1500")
+						span +
+					div(class="subheading") #{data.text[index]}
+

@@ -1,0 +1,61 @@
+mixin menuTree(menuName, menuLink, subMenu)
+	if subMenu
+		li.nav-item.dropdown
+			a#navbarDropdown.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aaria-expanded="false")= menuName
+			.dropdown-menu(aria-labelledby='navbarDropdown')
+				each item in subMenu
+					a.dropdown-item(href=item.path)=item.name
+	else
+		// for active link .active
+		li.nav-item
+			a.nav-link(href= menuLink)= menuName
+
+mixin account
+	- var user = true;
+	if user
+		button(href="#UserClick" data-toggle="collapse")
+			img.img-fluid.rounded-circle.border(src="/public/resources/images/person.jpeg", alt="")
+		#UserClick.account-cart-box.shadow.collapse
+			.d-flex.p-3
+				.account-cart-left
+					img.img-fluid.rounded-circle.border(src="/public/resources/images/person.jpeg", alt="")
+				.account-cart-right.text-center.ml-3
+					h5.mb-0 amin mithun
+					p.text-secondary aminmithun@gmail.com
+					a.btn.btn-primary.btn-sm(href="#" role='button') LOGOUT
+
+	else
+		a.text-secondary(href="#") Login
+		p.mx-1.my-0 or
+		a.text-danger(href="https://myaccount-beta.getsbo.com:13443/" target="_blank") Register
+
+header.header.sticky-top.shadow-sm
+	.container
+		.header-content
+			nav.navbar.navbar-expand-lg.navbar-light.custom-nav.px-0
+				a.navbar-brand.ml-2.ml-lg-0(href="/")
+					img(src="/public/resources/images/brand-logo.svg" width="100" height="40" alt="SBO" loading="lazy")
+				button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+					i.fas.fa-bars
+				#navbarNavDropdown.collapse.navbar-collapse.justify-content-end
+					ul.navbar-nav
+						each item in layoutData.header.menu_tree
+							+menuTree(item.name, item.path, item.submenu)
+
+				.right-section.d-flex.align-items-center.justify-content-md-end
+					.position-relative.mx-3.cart
+						button(href="#CartClick" data-toggle="collapse")
+							img(src="/public/resources/images/add_to_cart.svg" alt="add_to_cart")
+							span.badge.custom-badge.badge-pill 4
+						#CartClick.cart-box.shadow.collapse
+							.cart-header.d-flex.py-2.px-3
+								div
+									i.fas.fa-shopping-cart
+								p.m-0.ml-2.font-weight-bold Your Cart
+							.cart-body.d-flex.justify-content-between.p-3
+								p Subtotal
+								p $0.00
+							.cart-footer.text-center.pb-3
+								a.btn.btn-primary(href="/viewCart" role='button') VIEW CART
+					.d-flex.account-menu
+						+account

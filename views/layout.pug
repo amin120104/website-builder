@@ -1,0 +1,40 @@
+doctype html
+html
+	head
+		title #{currentData && currentData.title? currentData.title: bodyData && bodyData.title? bodyData.title: "Title Not found"} | SBO
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(charset="UTF-8")
+		meta(name="application-name" content="SBO")
+		meta(name="generator" content="SGF Framework")
+		meta(name="author" content= bodyData && bodyData.author ?  bodyData.author : "Admin" )
+		meta(name="keywords" content= bodyData && bodyData.keywords ?  bodyData.keywords : "Bandwidth optimizer, VOIP, Gateway" )
+		meta(name="description" content= bodyData && bodyData.meta_content ?  bodyData.meta_content : "" )
+		meta(http-equiv="content-type" content="text/html; charset=UTF-8")
+
+		link(rel='icon' href='https://www.getsbo.com/wp-content/themes/getsbo/favicon.ico' type="image/gif" sizes="16x16")
+
+		//- Third party style
+		link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+		link(rel='stylesheet' href='../public/resources/owlcarousel/assets/owl.carousel.min.css')
+		link(rel='stylesheet' href='../public/resources/owlcarousel/assets/owl.theme.default.min.css')
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css")
+		link(rel="stylesheet" href="../../public/js/magnific-popup.css")
+
+		link(rel='stylesheet' href='../../public/styles/style.css')
+
+		script(src="https://kit.fontawesome.com/3ef48c52a2.js")
+	body
+		include ./templates/header.pug
+		block content
+		include ./templates/footer.pug
+
+		//- Third party script
+		script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+		script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+		script(src='/../public/resources/owlcarousel/owl.carousel.js')
+		script(src="/../public/js/plugin.js")
+		script(src="/../../public/js/mixitup.min.js")
+		script(src="/../../public/js/jquery.magnific-popup.min.js")
+		
+		script(src="/../../public/js/main.js")
+

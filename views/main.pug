@@ -1,0 +1,14 @@
+extends layout.pug
+block content
+    each val in bodyData
+        case val.template
+            when "slider"
+                include ./templates/slider				
+            when "products"
+                include ./templates/products
+            when "countTemplate"
+                include ./templates/countTemplate
+            when "home_template_1"
+                include ./templates/home_template_1
+            default
+                div not found any temp1

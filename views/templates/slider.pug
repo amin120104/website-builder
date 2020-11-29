@@ -1,0 +1,18 @@
+- var data;
+- bodyData.map(item => {if(item.template === "slider") return data = item.items});
+
+section.home-slider-wrapper
+	.owl-carousel.home-slider.owl-theme
+		each val, index in data
+			-var addClass = index % 2 === 0 ? "slide-1" : "slide-2"
+				.single-slide.py-5(class=addClass)
+					.container
+						.row
+							.col-md-6
+								.text-content.d-flex.justify-content-center.h-100.flex-column
+									h2.text-white.animation.animated-item-1=val.title
+									p.animation.animated-item-2=val.desc
+									.slider-action.animation.animated-item-3.mt-3
+										a.btn.btn-danger.btn-lg(href=val.button_url)=val.button_name
+							.col-md-6
+								img.img-fluidwow.animation.animated-item-4(src=val.image alt='card image')
